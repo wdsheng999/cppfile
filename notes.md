@@ -35,4 +35,37 @@
     同一个类的对象中间可以访问私有的变量 private的检查只限于编译时刻。在运行的时候，可以访问私有的。他的.o完全丧失了cpp的特性，只要有办法。只是对类的
     友元friends 让可以访问私有 在**运算符的重载**有用
     在**class**中， 缺省的访问属性就是**private** **struct**则为**public**
-    
+10. 初始化列表initializer list 在构造函数后面加上成员变量的初始值
+    ```c_cpp
+    class Point{
+      private:
+      const float x,y;
+      Point(float xa=0.0, float ya=0.0):y(ya),x(xa){};
+    };
+    ```
+    可以初始化任何类型的变量，并且此时变量的初始化早于构造函数的执行
+    这一点当类的成员是对象，这一点会产生很大的区别
+    ```c_cpp
+    //initailization before constructor
+      Student::Student(string s):name(s){}
+
+      //assignment
+      Student::Student(string s){name=s;}
+    ```
+    **所有变量在初始化列表进行初始化**
+    <img src="./initiallist.png">
+    <img src="./ini2.png">
+11. 软件重用 组合reusing the implementation 
+    composition **[$10 11见initalization那个文件$](./initializationVassign.cpp)**
+    * by other objects: inclusion
+      * fully: 成员变量是对象本身
+      * reference: allow sharing 成员变量是指针 在外面
+    * 当成员变量是其他的类的时候 初始化列表要给出其构造函数并给出相应参数完成初始化
+12. 继承[inheritance](./inheritance.cpp) 用一个类改一改成为新类。与组合不同，用几个对象拼接
+    继承是没有实体的，组合一定有实体
+    分享了
+    * member data //一般时private
+    * member func//protected 给子类留的可以访问private的接口
+    * interface//一个类公开的部分
+   父类的私有不能被直接访问 除了protected
+   
