@@ -114,4 +114,69 @@
    建议:两三行,频繁调用的函数
    递归的 超过20行的不要inline
 
-16. const
+16. const i.e.``const int x=123;``则x的值不可以被修改
+    但是,对于c++而言 这个变量仍然时变量 编译器会给他分配内存 不是一个常数
+    对于变量的声明时,就需要给值,除非是 ``extern const int x;``
+    这个本身不是由机制保证的,是编译器不允许修改
+   在编译的时候发生的粘贴, 如果不知道const的值, 会报错 i.e.
+   ```
+   int x; cin>>x;
+   const int size=x;
+   double classAverage[size];//error
+   ```
+   同理,前面的extern声明的x, 如果没有被定义, 也不能放到上面去构造数组
+   因为编译器无法根据这个大小给数组分配内存
+   **指针const**
+   - 指针本身是const, 本身无法被修改
+   ``char * const q="abc";`` q是const;q++是不可以的,但是所指的内存是可以变得
+   *q='c';//ok q++//error
+   
+   - 所指向的对象是const
+   ``const char *p='abc';``*p是const 所指的内存是const, 意思是不能通过p修改我对应的内存单元, 而不是说p指的地方就变成const
+   *p='c';//error p++ //ok
+
+   三种表示的意义:``Person p1("Fred",20);``
+   ```
+   const Person* p=&p1;//对象时const 他所指的变量不能通过他修改的指针
+   Person const*p=&p1;//对象时const 
+   Person *const p=&p1;//指针是const
+   ```
+   写在星号前面则对象是const 在星号后面指针是const
+   const person *const p//两个都是const
+   <img src="./const.png">
+   在[16const](16const.cpp)中, 虽然指针没给到const, 但是字符串在堆栈的代码段, 代码段本身不可写, 不可更改.可见s在代码段,数组a不在
+   <img src="./constCS.png">
+   **如果一个函数的参数是``const int* x``则意味着可以接受任何类型的int, 并且我不会对你传给我的数据进行修改**
+   i.e.
+   ```
+   void f(const int *x);
+   int a =15;
+   f(&a);//ok
+   const int b=a;//ok
+   f(&b);//ok
+   b=a+1;//error
+   ```
+   $地址传递:$ 整个object的传递耗费很大, 通常直接操作地址, 但是这样很可能会改变object本身, 不够safe. 所以在函数之间的地址传递 通常使用const
+   **对象const**[此时可以回看employee, 包括了内连](13employee.cpp)
+   如果一个对象被const修饰, 很可能出问题, 因为他的成员函数可能会修改变量
+   所以, 需要知道哪些函数不会修改成员变量的值: 在一些函数的后面加上const,保证着些函数不会修改成员变量的值
+   ```
+   int Date::set_day(int d){
+      day=d;//ok can be modified
+   }
+   int Date::get_day() const{
+      day++;//error
+      set_day;//error
+      return day;//ok
+   }
+   ```
+   这里 const 被放在函数的后面 其实意味着 this是const
+   [示例在这里 只运行了f()const](16constfunc.cpp)
+   **成员变量const** 如果没有在initialization list中初始化会报错
+   成员变量是const 不能做数组的size 前面提过
+   有一种可能时 前面再加一个static 或者用一个枚举 
+17. 引用 
+    $cpp提供的放对象的地方多,堆栈,堆,全局数据区;$
+    $ 访问对象的方式多,变量为对象,指针访问对象,引用访问对象$
+    一共九种组合
+    
