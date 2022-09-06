@@ -68,4 +68,50 @@
     * member func//protected 给子类留的可以访问private的接口
     * interface//一个类公开的部分
    父类的私有不能被直接访问 除了protected
-   
+13. 父类子类关系 std::string& 类的全名 类属于某个命名空间.
+    当我们构造子类的对象时，会调用父类的默认构造函数，若不存在会报错[见$inheritance$](./inheritance.cpp)
+    当我的构造函数不是默认构造函数的时候，不能在构造函数里送参数进去
+    **父类的参数也必须通过初始化列表完成，顺序是先父类，然后依次**
+      * 此时，父类先构造，然后构造子类， 析构的时候子类先被析构
+   ::解析符 子类访问父类的变量
+   当子类中和父类有相同的成员函数，不会重载，父类的函数都会看不见 隐藏了
+   并且， 这个同样的函数，子类的和父类的关系，只能使用解析符
+14. 重构overloading 同名函数参数表一定不一样，返回类型不能区分
+    预先给一个值，缺省参数，这个在函数原型里面 也就是h文件中实现。cpp中不能使用 原理就是default argument是编译的时候贴进来的，所以声明的时候很重要
+    **尽量少写default value，难以阅读**
+15. overhead 额外开销 for a func to be called
+    由于c不支持重载，c++在转汇编的时候会改名字
+    在程序运行的过程 
+    * push params
+    * push return addr
+    * prepare return values
+    * pop all pushed
+
+   关键词 inline 不是去调用函数，而是把对应的代码嵌入到调用的地方
+   inline函数写法：必须在声明定义都放inline，如果少了会没有贴
+   .h ``inline int plusOne(int x);``
+   .cpp ``inline int plusOne(int x) {return x++;};``
+   inline函数的 精髓是，要在调用的时候知道长什么样子，全部内容放到.h就完事了
+   加了inline 表明函数不是definition 而是declearation
+   以空间换时间,但是比宏定义要安全
+   ```c_cpp
+   #define f(a) a+a
+   main(){
+      double a=5;
+      printf("%d",f(a));
+   }
+   ```
+   ```c_cpp
+   inline int f(int i){return 2*i;}
+   main(){
+      double i=5;
+      printf("%d",f(i));//这里会做类型检查
+   }
+   ```
+   如果inline出现递归,则编译器不会使用inline
+   成员函数,如果在声明的时候给出inline 统统都是[inline示例](./inlinemember.cpp)
+   更加整洁的做法时在下方给出定义,使用inline关键字 [示例](13employee.cpp)
+   建议:两三行,频繁调用的函数
+   递归的 超过20行的不要inline
+
+16. const
