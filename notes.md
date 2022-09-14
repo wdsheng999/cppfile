@@ -175,8 +175,80 @@
    **成员变量const** 如果没有在initialization list中初始化会报错
    成员变量是const 不能做数组的size 前面提过
    有一种可能时 前面再加一个static 或者用一个枚举 
-17. 引用 
+
+17. 引用 reference & c++的一种新的数据类型
     $cpp提供的放对象的地方多,堆栈,堆,全局数据区;$
     $ 访问对象的方式多,变量为对象,指针访问对象,引用访问对象$
     一共九种组合
-    
+    char c;//character
+    char* p=&c;//pointer
+    char& r=c;//reference
+    又称为别名
+
+    ```c_cpp
+    int X=47;
+    int& Y=X;
+    cout<<"Y="<<Y<<endl;//47
+    Y=18;
+    cout<<"Y="<<Y<<endl;//18
+    ```
+    规则:在定义的时候一定要初始化
+    ``int &y=x;``
+    ``const int& z=x;`` 不能通过z修改x,但是x变了z就变了
+    作为函数的参数
+    ``void f(int& x);``
+    ``f(y)``
+    此时在函数里改x,则外面的y会变
+    **和指针的区别**,  [示例在这里](./17ref.cpp)
+    - 不能为null
+    - 在运行的时候不可以改变, 不能被再分配
+    - 但ref实际上是使用const* 实现的
+  
+    所引用的对象一定要有地址
+    ```
+    void func(int&x);
+    func(i*3);//error 这个东西有结果但是没有地址 匿名的临时变量
+    ```
+    不能再次引用 no ref to ref
+    ```
+    int x;
+    int y;
+    int &a=x;
+    int& b=a;//error
+    int& b=y;
+    b=a;// actually y=x;
+    ```
+    no pointers to reference, but ref to pointer ok
+    ```
+    int&* p;//ERROR 如果*p时ref, 则可以取到ref的地址了
+    int*& p;//ok
+    ```
+    no array to ref因为ref不是一个实体,就没有数组
+    $与java对比, 所有对象放在堆, 只能通过指针访问对象,但叫引用$
+    $java的指针不能计算$
+18. 向上造型 upcasting 子类对象
+    [查看这个对象访问的例子](17ref.cpp)可以通过这个方法去看class里面有什么
+    子类的对象当作父类看待 downcast有可能出问题 但是upcast安全
+    在[13 employee](13employee.cpp)里面, 出现这个
+    ```
+    Manager pete("pete","444-55-1236","boss");
+    Employee* ep=&pete;//upcast
+    Employee& ep=pete;//upcast
+    ```
+    此时再去调用ep的print则,只是调用了父类的
+19. 多态性polymorphism [19shapeclass](19shapeclass.cpp)
+    建立在两个基础上:
+    - upcast
+    - dynamic bonding 函数是virtual的通过指针访问则时动态绑定
+  
+    实现基础:
+    在[19virtualfunc](19shapeclass.cpp)类中,定义了一个虚函数后,发现p所指向的第一个单元不再是第一个成员变量
+    所有有virtual的类前面有一个vptr,指向虚函数表, 虚函数表时类的,不会变
+    p,q不一样,但是其指向的虚函数表是一样的
+    <img src="./19vtable.png">
+    仍然保持ellipse的结构但多了自己的resize
+    <img src="./19vtable1.png">
+
+
+       
+
