@@ -91,10 +91,36 @@ g++ test.o -o test
     9
     2 directories, 3 files
     ```
-方法1.直接编译
+方法1.直接编译 文件夹为``3.gccbuild``
+```
+# 将 main.cpp src/Swap.cpp 编译为可执行文件
+g++ main.cpp src/Swap.cpp -Iinclude
+# 运行a.out
+./a.out
+```
+通过-I参数将头文件导入 
+方法2.增加编译参数 
+```
+# 将 main.cpp src/Swap.cpp 编译为可执行文件 附带参数
+g++ main.cpp src/Swap.cpp -Iinclude -std=c++11 -o2 -wall -o b.out
+# 运行b.out
+./b.out
+```
+方法3.生成静态库文件并编译
+```
+看视频
+```
+方法4.生成动态链接库文件
+```
 
+```
 
 ## 第四章 odb调试器
+GDB GNU Debugger 是linux环境最常用的调试器,vscode的调试功能
+主要功能 设置断点 查看变量 动态改变执行环境 分析崩溃产生的core文件
+### - 常用调试功能参数
+
+
 
 ## 第五章 VSCode IDE
 
