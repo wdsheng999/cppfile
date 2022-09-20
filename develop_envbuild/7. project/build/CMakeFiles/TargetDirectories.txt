@@ -1,0 +1,3 @@
+/home/wds/文档/cppfile/develop_envbuild/7. project/build/CMakeFiles/cmake_exe.dir
+/home/wds/文档/cppfile/develop_envbuild/7. project/build/CMakeFiles/edit_cache.dir
+/home/wds/文档/cppfile/develop_envbuild/7. project/build/CMakeFiles/rebuild_cache.dir

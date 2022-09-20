@@ -230,3 +230,19 @@ make
 
 第二个实战 
 ## 第七章 实战 利用vscode进行完整开发
+<img src="./ksnip_20220920-193137.png">
+先开发包含在士兵类的枪类
+
+7.1 合理设置项目结构
+src include main
+分别写类的定义和实现
+7.2 编写程序
+见文件夹
+7.3 编写cmakelists
+与使用g++命令对比
+g++ main.cpp src/Gun.cpp src/solider.cpp -Iinlcude -o exe
+-Wall -g -o2
+7.4 手动编译cmake
+
+7.5 配置vscode的json调试文件
+
