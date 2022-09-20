@@ -56,7 +56,7 @@ g++ test.o -o test
 -O 优化源代码 -O0不优化 1为默认优化 2指令调整 3包括循环展开等优化 
 带-O编译速度变慢 但文件运行会便快
 -l -L 指定库 制定库路径 
-指定库时 需要在/lib /usr/lib /usr/local/lib三个文件夹内
+指定库时 需要在**/lib /usr/lib /usr/local/lib**三个文件夹内
     ```
     # 链接glog库
     g++ -lglog test.cpp
@@ -92,6 +92,7 @@ g++ test.o -o test
     2 directories, 3 files
     ```
 方法1.直接编译 文件夹为``3.gccbuild``
+通过-I实现引入头文件
 ```
 # 将 main.cpp src/Swap.cpp 编译为可执行文件
 g++ main.cpp src/Swap.cpp -Iinclude
@@ -107,22 +108,48 @@ g++ main.cpp src/Swap.cpp -Iinclude -std=c++11 -o2 -wall -o b.out
 ./b.out
 ```
 方法3.生成静态库文件并编译
+静态库的产生本质上是一个归导,需要先生成.o文件,然后使用ar命令
 ```
-看视频
+cd src
+#生成.o文件
+g++ swap.cpp -c -I../include
+#生成静态链接库 静态库文件一般为.a
+ar rs libswap.a swap.o
+cd ..
+#链接 生成可执行文件staticmian
+g++ main.cpp -Iinclude -Lsrc -lswap -o staticmain
 ```
+在上命令中 执行的顺序为 -lswap 等价与导入libswap.a 但是要去src目录下找, 所以-Lsrc 
 方法4.生成动态链接库文件
 ```
+cd src
+#生成动态链接库libswap.so
+g++ swap.cpp -I../include -fPIC -shared -o libswap.so
+#等价与 gcc swap.cpp -I../include -c -fPIC 
+# gcc -shared -o libswap.so swap.o
 
+cd..
+#链接 生成可执行文件sharemain
+g++ main.cpp -Iinclude -Lsrc -lswap -o sharemain
 ```
+-shared 动态库
+-fPIC position independent code 不加-fPIC编译出来的.so要在加载的时候再次重定位,无法真正共享
+但此时在执行的时候 直接执行是会报错的
+因为动态库不在这个目录下,需要通过加入,然后马上执行``LD_LIBRARY_PATH = src ./sharemain``
 
 ## 第四章 odb调试器
 GDB GNU Debugger 是linux环境最常用的调试器,vscode的调试功能
 主要功能 设置断点 查看变量 动态改变执行环境 分析崩溃产生的core文件
-### - 常用调试功能参数
+gdb有很多的命令 首先使用vscode进行调试 代码如4.gdbtest
+需要注意的是 编译的时候带上-g gcc -g main.cpp -o main 否则不能使用gdb调试
+
 
 
 
 ## 第五章 VSCode IDE
+两个实例
+在5.1 folder中, 对单一文件进行了简单打g++命令
+在5.2 中, 完成了前面编译用到swap的编写 一个类{头文件 cpp 执行文件cpp}
 
 ## 第六章 CMake  
 
