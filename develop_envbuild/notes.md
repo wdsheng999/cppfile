@@ -150,7 +150,83 @@ gdb有很多的命令 首先使用vscode进行调试 代码如4.gdbtest
 两个实例
 在5.1 folder中, 对单一文件进行了简单打g++命令
 在5.2 中, 完成了前面编译用到swap的编写 一个类{头文件 cpp 执行文件cpp}
-
+编译 g++ main.cpp src/main.cpp -Iinclude -o main
+F2变量重命名 minimap
 ## 第六章 CMake  
+1. 介绍
+简单项目写makefile 复杂项目用cmake
+cmake 跨平台
+2. 语法
+参数在括号内 空格或；为分隔符
+指令大小写无关
+使用${}取变量的值, 但是在if语句中直接使用变量名
 
+3. 指令和变量
+3.1 指令
+cmake_minimum_required(VERSION xx)
+
+project (__name__) 定义工程名称和语言
+
+set(valName val) 定义变量
+i.e. ``set({SRC} hello.cpp print.cpp)``
+include_directories(dir1 dir2) 定义头文件搜索路径 -I
+
+link_directories(dir1 dir2) 定义库文件搜索路径 -L
+
+add_library(libname SHARED|STATIC|MODULE source) 生成库文件
+i.e ``add_library(hello SHARED ${SRC})``
+
+add_compile_options 添加编译参数
+i.e. ``add_compile_options(-Wall -std=c++11 -o2)``
+
+add_executabel（exename src1 src2) 生成可执行文件
+i.e. ``add_executabel(main main.cpp)``
+
+target_link_libraries(target lib1 lib2)为目标链接共享库 -l
+i.e.``target_link_libraries(main hello)``
+
+add_subdirectory(sourcedir bin_dir) 为工程添加存放源的子目录
+i.e. ``add_subdirectory(src)`` **这个文件夹要有一个CmakeLists.txt**
+
+aux_source_dictory(dir VAR) 发现目录下的所有源代码并将列表存储在变量
+用于自动构建源文件列表
+i.e. ``aux_source_dictory(. SRC)`` 将当前目录所有文件存在变量
+
+3.2 变量
+CMAKE_CXX_FLAGS g++编译选项
+``set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")``
+CMAKE_BUILD_TYPE 编译类型
+``set(CMAKE_BUILD_TYPE Debug|Release)
+CMAKE_CXX_COMPLIER 指定编译器
+关于路径 CMAKE_BINARY_DIR CMAKE_SOURCE_DIR
+EXECUTABLE_OUTPUT_PATH 可执行文件输出位置
+LIBRARY_OUTPUT_PATH 库文件输出位置
+
+
+4. 编译工程
+项目主目录存在一个CMakeLists.txt文件
+如果包含源文件的子文件夹不包含CMakeLists, 子目录的编译规则在主目录
+若包含 需要通过add_subdirectory添加即可
+
+- 编译流程
+编写CMakeLists
+执行命令cmake PATH 生成Makefile 
+使用make进行编译
+
+- 两中构建方式
+内部构建 所有文件放在一起 不推荐
+外部构建 输出文件与源文件不放在一个目录
+```
+mkdir build
+cd build 
+cmake ..
+make
+```
+
+
+5. 项目实战
+对5.vscode文件夹中的内容进行完善 使用cmake进行编译
+第一个实战 对5.1 hello 
+
+第二个实战 
 ## 第七章 实战 利用vscode进行完整开发

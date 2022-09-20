@@ -1,13 +1,12 @@
-#include"swap.h"
+#include "swap.h"
 
 int main()
 {
-    swap Myswap(15,26);
+    swap Myswap(15, 26);
     Myswap.printInfo();
     Myswap.run();
-    std::cout<<"after swap"<<std::endl;
+    std::cout << "after swap" << std::endl;
     Myswap.printInfo();
 
-    
     return 0;
 }
