@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 project(GAME)
 
-set(CMAKE_CXX_KNOWN_FEATURES "${CMAKE_CXX_FEATURES} -g -o2 -Wall")
+set(CMAKE_CXX_COMPILE_FEATURES "${CMAKE_CXX_COMPILE_FEATURES} -g -o2 -Wall")
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
