@@ -1,4 +1,5 @@
 # 使用vscode开发c/cpp环境linux配置教程
+[基于VSCode和CMake实现C/C++开发 | Linux篇]( https://www.bilibili.com/video/BV1fy4y1b7TC)
 ## 第一章 linux篇
 - 目录结构
   bin 可以运行的文件 dev 外设 home 家文件 etc 存储一些配置文件 proc 进程运行时的 root 管理员的家目录 
