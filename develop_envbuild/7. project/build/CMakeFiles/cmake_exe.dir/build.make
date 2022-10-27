@@ -73,43 +73,43 @@ CMakeFiles/cmake_exe.dir/main.cpp.o: CMakeFiles/cmake_exe.dir/flags.make
 CMakeFiles/cmake_exe.dir/main.cpp.o: ../main.cpp
 CMakeFiles/cmake_exe.dir/main.cpp.o: CMakeFiles/cmake_exe.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/wds/文档/cppfile/develop_envbuild/7. project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cmake_exe.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cmake_exe.dir/main.cpp.o -MF CMakeFiles/cmake_exe.dir/main.cpp.o.d -o CMakeFiles/cmake_exe.dir/main.cpp.o -c "/home/wds/文档/cppfile/develop_envbuild/7. project/main.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cmake_exe.dir/main.cpp.o -MF CMakeFiles/cmake_exe.dir/main.cpp.o.d -o CMakeFiles/cmake_exe.dir/main.cpp.o -c "/home/wds/文档/cppfile/develop_envbuild/7. project/main.cpp"
 
 CMakeFiles/cmake_exe.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cmake_exe.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/wds/文档/cppfile/develop_envbuild/7. project/main.cpp" > CMakeFiles/cmake_exe.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/wds/文档/cppfile/develop_envbuild/7. project/main.cpp" > CMakeFiles/cmake_exe.dir/main.cpp.i
 
 CMakeFiles/cmake_exe.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cmake_exe.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/wds/文档/cppfile/develop_envbuild/7. project/main.cpp" -o CMakeFiles/cmake_exe.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/wds/文档/cppfile/develop_envbuild/7. project/main.cpp" -o CMakeFiles/cmake_exe.dir/main.cpp.s
 
 CMakeFiles/cmake_exe.dir/src/gun.cpp.o: CMakeFiles/cmake_exe.dir/flags.make
 CMakeFiles/cmake_exe.dir/src/gun.cpp.o: ../src/gun.cpp
 CMakeFiles/cmake_exe.dir/src/gun.cpp.o: CMakeFiles/cmake_exe.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/wds/文档/cppfile/develop_envbuild/7. project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cmake_exe.dir/src/gun.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cmake_exe.dir/src/gun.cpp.o -MF CMakeFiles/cmake_exe.dir/src/gun.cpp.o.d -o CMakeFiles/cmake_exe.dir/src/gun.cpp.o -c "/home/wds/文档/cppfile/develop_envbuild/7. project/src/gun.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cmake_exe.dir/src/gun.cpp.o -MF CMakeFiles/cmake_exe.dir/src/gun.cpp.o.d -o CMakeFiles/cmake_exe.dir/src/gun.cpp.o -c "/home/wds/文档/cppfile/develop_envbuild/7. project/src/gun.cpp"
 
 CMakeFiles/cmake_exe.dir/src/gun.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cmake_exe.dir/src/gun.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/wds/文档/cppfile/develop_envbuild/7. project/src/gun.cpp" > CMakeFiles/cmake_exe.dir/src/gun.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/wds/文档/cppfile/develop_envbuild/7. project/src/gun.cpp" > CMakeFiles/cmake_exe.dir/src/gun.cpp.i
 
 CMakeFiles/cmake_exe.dir/src/gun.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cmake_exe.dir/src/gun.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/wds/文档/cppfile/develop_envbuild/7. project/src/gun.cpp" -o CMakeFiles/cmake_exe.dir/src/gun.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/wds/文档/cppfile/develop_envbuild/7. project/src/gun.cpp" -o CMakeFiles/cmake_exe.dir/src/gun.cpp.s
 
 CMakeFiles/cmake_exe.dir/src/solider.cpp.o: CMakeFiles/cmake_exe.dir/flags.make
 CMakeFiles/cmake_exe.dir/src/solider.cpp.o: ../src/solider.cpp
 CMakeFiles/cmake_exe.dir/src/solider.cpp.o: CMakeFiles/cmake_exe.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/wds/文档/cppfile/develop_envbuild/7. project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cmake_exe.dir/src/solider.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cmake_exe.dir/src/solider.cpp.o -MF CMakeFiles/cmake_exe.dir/src/solider.cpp.o.d -o CMakeFiles/cmake_exe.dir/src/solider.cpp.o -c "/home/wds/文档/cppfile/develop_envbuild/7. project/src/solider.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cmake_exe.dir/src/solider.cpp.o -MF CMakeFiles/cmake_exe.dir/src/solider.cpp.o.d -o CMakeFiles/cmake_exe.dir/src/solider.cpp.o -c "/home/wds/文档/cppfile/develop_envbuild/7. project/src/solider.cpp"
 
 CMakeFiles/cmake_exe.dir/src/solider.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cmake_exe.dir/src/solider.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/wds/文档/cppfile/develop_envbuild/7. project/src/solider.cpp" > CMakeFiles/cmake_exe.dir/src/solider.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/wds/文档/cppfile/develop_envbuild/7. project/src/solider.cpp" > CMakeFiles/cmake_exe.dir/src/solider.cpp.i
 
 CMakeFiles/cmake_exe.dir/src/solider.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cmake_exe.dir/src/solider.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/wds/文档/cppfile/develop_envbuild/7. project/src/solider.cpp" -o CMakeFiles/cmake_exe.dir/src/solider.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/wds/文档/cppfile/develop_envbuild/7. project/src/solider.cpp" -o CMakeFiles/cmake_exe.dir/src/solider.cpp.s
 
 # Object files for target cmake_exe
 cmake_exe_OBJECTS = \
