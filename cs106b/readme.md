@@ -1,5 +1,6 @@
 [2020summer](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1208/assignments/assign0/)
-
+[2017 spring](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1176/)
+主要跟着2017spring
 # assign 0
 install Qt
  check install --> sample-project/pro文件
@@ -11,6 +12,10 @@ install Qt
 在这个网站 找到了问题 (https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1174/resources/qt-creator/qt-creator-troubleshooting.html)
 >Q: If I create a C++ project of my own, it builds and runs fine. But when I try the SampleProject or the Homework ZIP project, it builds successfully and then doesn't run. Why not?
 A: This usually means you don't have Java JDK 7 properly installed as described above. Follow the Java steps above to ensure that you do have Java.
+
+apt install open-jdk-8  
+最广泛使用打java版本
+
 
 QA文档保存在cs106b/troubleshooting
 
