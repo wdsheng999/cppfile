@@ -150,4 +150,16 @@ statement, the comparison, and the setting of currentMax in the loop.
         for (int i=1;i<n;i++>)
 therefore O(n)
 
-in [lectureCode](./allCodeLecture2/code/asymptotic/)
+in [lectureCode asymptotic](./allCodeLecture2/code/asymptotic/)
+
+
+
+### summary
+- Constant, O(1): not dependent on n
+- Linear, O(n): at each step, reduce the problem by a constant amount like 1 (or
+two, three, etc.)
+- Logarithmic, O(log n): cut the problem by 1/2, 1/3, etc.
+- Quadratic, O(n2): doubly nested things
+O(n3): triply nested things
+- Exponential, O(an): reduce a problem into two or more subproblems of a
+smaller size.
