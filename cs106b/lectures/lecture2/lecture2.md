@@ -63,4 +63,91 @@ return 0;
 <img src="./cmath.png">
 
 ## value semantics
+变量传递是值传递 不会改变本身
 
+## reference semantics
+declare a parameter with an & after its type
+link the caller and callee to the same variable in memory
+
+referecnes can be confusing as the ampersand character is also used to specify variable or object.
+the & 只有在声明函数的时候是引用传递 
+而不是调用打时候
+
+引用传递打好处/坏处
+同时"return" more than one value
+防止多次传递
+
+坏处:调用的时候看不出来是咋样[看这个](./valuesemantics.cpp)
+稍微慢一点点 
+没法在引用传递 直接传值进去 grow_refer(39) -->wrong
+
+### how do we return multiple things
+
+```c
+/*
+* Solves a quadratic equation ax^2 + bx + c = 0,
+* storing the results in output parameters root1 and root2.
+* Assumes that the given equation has two real roots.
+*/
+void quadratic(double a, double b, double c,
+double& root1, double& root2) {
+double d = sqrt(b * b - 4 * a * c);
+root1 = (-b + d) / (2 * a);
+root2 = (-b - d) / (2 * a);
+}
+```
+how to return? reference
+还有什么方法
+Possible choices:
+•We could have returned a boolean if the roots were imaginary
+•We could have added extra parameters to support some form of imaginary numbers
+•We could have called an error function inside this function (but that is not
+always a good idea -- functions like this should generally have an
+interface through the parameters and/or return value, and should
+gracefully fail)
+•We could have re-written the function as two functions that
+return either the positive or negative root, without using
+references.
+•We could have returned a Vector<double> object (tricky syntax!)
+
+
+## computational complexity
+```c
+int vectorMax(Vector<int> &v){
+    int currentMax = v[0];
+    int n = v.size();
+    for (int i=1; i < n; i++){
+        if (currentMax < v[i]) {
+            currentMax = v[i];
+        }
+    }
+    return currentMax;
+}
+```
+why is n important to this function
+
+way1: for assembly code, count down the time consumption
+way2: count the steps in source code
+
+
+Wikipedia:
+“Big-O notation describes the limiting behavior of a function when
+the argument tends towards a particular value or infinity, usually in terms of simpler functions.”
+
+<img src="./bigO.png">
+
+When you are deciding what Big-O is for an algorithm or function,
+simplify until you reach one of these functions, and you will have
+your answer.
+
+now we are back to vectorMAx()
+    always worst case.
+    ignore primitive operand
+
+
+so ignore the original two variable initializations, the return
+statement, the comparison, and the setting of currentMax in the loop.
+        for (int i=1;i<n;i++>)
+therefore O(n)
+
+in [lectureCode](./allCodeLecture2/code/asymptotic/)

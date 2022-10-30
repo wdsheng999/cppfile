@@ -4,7 +4,7 @@
 #include<iostream>
 #include "console.h"
 #include "simpio.h"
-
+#include<unistd.h>
 //for file
 #include<fstream>
 #include"filelib.h"
@@ -21,7 +21,9 @@ int __main(){
 //    cout<<"your integer:"<<a<<endl;
 //    cout<<"your string:"<<s<<endl;
 
+//    getcwd(buffer,)
     ifstream stream;
+    cout<<"current working dirctory: "<<
     openFile(stream, "./readme.txt");
     getline(stream,s);
 //    cout<<"the dir is:"<<
