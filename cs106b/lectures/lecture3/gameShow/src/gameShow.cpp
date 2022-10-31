@@ -22,25 +22,30 @@ void suspense();
 int getChoice();
 
 int main() {
-    setUpGame();
-    string prize = "some candy";
 
-    int choice = getChoice();
-    if(choice == 1) {
-        doorOne(prize);
-    } else if(choice == 2) {
-        doorTwo(prize);
-    } else if(choice == 3) {
-        doorThree(prize);
+    while (1) {
+        setUpGame();
+        string prize = "some candy";
+
+        int choice = getChoice();
+        if(choice == 1) {
+            doorOne(prize);
+        } else if(choice == 2) {
+            doorTwo(prize);
+        } else if(choice == 3) {
+            doorThree(prize);
+        }
+        suspense();
+        cout << "You win " << prize << "!" << endl;
+        pause(1000);
     }
 
-    suspense();
-    cout << "You win " << prize << "!" << endl;
+
     return 0;
 }
 
 void doorOne(string & prize) {
-    int dollars = 1 / 5 * 100;
+    int dollars = 1  * 100 / 5;
     prize = "$" + integerToString(dollars);
 }
 

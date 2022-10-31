@@ -393,3 +393,9 @@ exists($$PWD/lib/autograder/*.cpp) {
 ###############################################################################
 
 # END OF FILE (this should be line #395; if not, your .pro has been changed!)
+
+DISTFILES += \
+    lib/StanfordCPPLib/index.html \
+    lib/addr2line.exe \
+    lib/readme.txt \
+    lib/spl.jar

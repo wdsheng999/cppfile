@@ -22,4 +22,5 @@ QA文档保存在cs106b/troubleshooting
 follow https://github.com/Jack-Chan-2001/CS106B
 2018 和b站课程统一
 
-
+斯坦福c++库说明
+http://www.martinstepp.com/cppdoc/
