@@ -110,6 +110,10 @@ return either the positive or negative root, without using
 references.
 •We could have returned a Vector<double> object (tricky syntax!)
 
+using reference to pass in
+please check program ./reference.cpp
+可以先声明类型 然后直接扔进去操作 不需要返回值
+
 
 ## computational complexity
 ```c
