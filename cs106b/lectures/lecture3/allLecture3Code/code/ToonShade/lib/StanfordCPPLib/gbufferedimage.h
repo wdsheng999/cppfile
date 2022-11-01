@@ -24,7 +24,6 @@
 
 #include "grid.h"
 #include "ginteractors.h"
-#include "gobjects.h"
 #include "gtypes.h"
 
 // default color used to highlight pixels that do not match between two images
