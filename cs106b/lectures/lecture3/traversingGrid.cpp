@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include "grid.h"
 using namespace std;
 
