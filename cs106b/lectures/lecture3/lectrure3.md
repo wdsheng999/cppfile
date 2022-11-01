@@ -15,6 +15,12 @@ setupGame ifstream openfile getline
 ## vectors and grids
 c++ powerful collection: vector grid map stack queue set
 
+### collections
+1. defined as classes: have constructors and member functions
+2. templatized:have mechanism for collecting diffferent variable types
+3. deep copy assignment: pass by reference
+
+
 vector list of element can grow or shrink
 have index advanced array 
 include "vector.h"
@@ -47,3 +53,8 @@ matrix[1][0]=matrix[0][1]
 
 numRows numCols resize(rows,cols)
 inBounds(row,col) true/false
+
+### example: traversing a grid
+
+问题:怎么g++用这个库
+
