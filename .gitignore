@@ -1,3 +1,4 @@
 #this is gitignore
 # ignore file
 build*
+index.html*
