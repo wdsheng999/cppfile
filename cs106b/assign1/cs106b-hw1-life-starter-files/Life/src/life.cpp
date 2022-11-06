@@ -23,6 +23,8 @@ void ShowGrid(Grid<char> grid);
 Grid<char> NextState(Grid<char> grid);
 bool checkState(char x);//check the grid is alive or not
 Grid<char> NextState_w(Grid<char> grid);//wrapping
+Grid<char> Animation(Grid<char> gird);//clear and show each step
+Grid<char> Animation_w(Grid<char> grid);
 
 /*-------------main--------------*/
 int main() {
@@ -35,21 +37,43 @@ int main() {
     ShowGrid(life);
     if(wrap=="n")
     {
-        string step=getLine("a)nimate, t)ick, q)uit?");
-        if(step=="q"){
-            cout << "Have a nice Life!" << endl;
-            return 0;
-        }
-        while(step=="t"){
-            Grid<char> next_life=NextState(life);
-            life=next_life;
-            ShowGrid(life);
+        while(1)
+        {
             string step=getLine("a)nimate, t)ick, q)uit?");
             if(step=="q"){
                 cout << "Have a nice Life!" << endl;
                 return 0;
             }
+            else if(step=="t"){
+                Grid<char> next_life=NextState(life);
+                life=next_life;
+                ShowGrid(life);
+            }
+            else if(step=="a"){
+                life=Animation(life);
+            }
         }
+
+    }
+    else if(wrap=="y")
+    {
+        while(1)
+        {
+            string step=getLine("a)nimate, t)ick, q)uit?");
+            if(step=="q"){
+                cout << "Have a nice Life!" << endl;
+                return 0;
+            }
+            else if(step=="t"){
+                Grid<char> next_life=NextState_w(life);
+                life=next_life;
+                ShowGrid(life);
+            }
+            else if(step=="a"){
+                life=Animation_w(life);
+            }
+        }
+
     }
 
 //    cout << "Have a nice Life!" << endl;
@@ -158,6 +182,23 @@ bool checkState(char x)
     }
 }
 
+Grid<char> Animation(Grid<char> grid){
+    string time_str=getLine("How many frames?");
+    int times=stringToInteger(time_str);
+    int n_cols=grid.numCols();
+    int n_rows=grid.numRows();
+    Grid<char> tmp_grid(n_rows,n_cols);
+    for (int  var = 0;  var< times; var++) {
+        tmp_grid=NextState(grid);
+        grid=tmp_grid;
+        ShowGrid(grid);
+        pause(100);
+        clearConsole();
+    }
+
+    return grid;
+}
+
 Grid<char> NextState_w(Grid<char> grid){
     int n_cols=grid.numCols();
     int n_rows=grid.numRows();
@@ -178,8 +219,14 @@ Grid<char> NextState_w(Grid<char> grid){
                 */
                 for(int y=j-1;y<j+1;y++)
                 {
-                    //out of bound
+                    //wraping using a math function
                     if(grid.inBounds(x,y)){
+                        if(checkState(grid[x][y]))
+                            state=state+1;
+                    }
+                    else{
+                        x=(x+n_rows)%n_rows;
+                        y=(y+n_cols)%n_cols;
                         if(checkState(grid[x][y]))
                             state=state+1;
                     }
@@ -188,11 +235,27 @@ Grid<char> NextState_w(Grid<char> grid){
             if(checkState(grid[i][j])) state=state-1;
             switch(state)
             {
-                case 2: continue;
-                case 3: tempGrid[i][j]='X';
+                case 2: tempGrid[i][j]=grid[i][j];break;
+                case 3: tempGrid[i][j]='X';break;
                 default: tempGrid[i][j]='-';
             }
         }
     }
     return tempGrid;
+}
+Grid<char> Animation_w(Grid<char> grid){
+    string time_str=getLine("How many frames?");
+    int times=stringToInteger(time_str);
+    int n_cols=grid.numCols();
+    int n_rows=grid.numRows();
+    Grid<char> tmp_grid(n_rows,n_cols);
+    for (int  var = 0;  var< times; var++) {
+        tmp_grid=NextState_w(grid);
+        grid=tmp_grid;
+        ShowGrid(grid);
+        pause(100);
+        clearConsole();
+    }
+
+    return grid;
 }
