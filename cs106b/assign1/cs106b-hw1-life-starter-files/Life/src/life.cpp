@@ -40,17 +40,21 @@ int main() {
         while(1)
         {
             string step=getLine("a)nimate, t)ick, q)uit?");
-            if(step=="q"){
+            if(step=="q" || step=="Q"){
                 cout << "Have a nice Life!" << endl;
                 return 0;
             }
-            else if(step=="t"){
+            else if(step=="t" || step=="T"){
                 Grid<char> next_life=NextState(life);
                 life=next_life;
                 ShowGrid(life);
             }
-            else if(step=="a"){
+            else if(step=="a" || step=="A"){
                 life=Animation(life);
+            }
+            else{
+                cout<<"input wrong, please follow the guidance"<<endl;
+                continue;
             }
         }
 
@@ -60,17 +64,21 @@ int main() {
         while(1)
         {
             string step=getLine("a)nimate, t)ick, q)uit?");
-            if(step=="q"){
+            if(step=="q" || step=="Q"){
                 cout << "Have a nice Life!" << endl;
                 return 0;
             }
-            else if(step=="t"){
+            else if(step=="t" || step=="T"){
                 Grid<char> next_life=NextState_w(life);
                 life=next_life;
                 ShowGrid(life);
             }
-            else if(step=="a"){
+            else if(step=="a" || step=="A"){
                 life=Animation_w(life);
+            }
+            else{
+                cout<<"input wrong, please follow the guidance"<<endl;
+                continue;
             }
         }
 
@@ -83,18 +91,34 @@ int main() {
 void ShowGrid(Grid<char> grid)
 {
     //cout<<"this is the grid print result"<<endl;
-    string str=grid.toString2D();
-    cout<<str<<endl;
+    //string str=grid.toString2D();
+    //cout<<str<<endl;
+    for(int i=0;i<grid.numRows();i++)
+    {
+        for(int j=0;j<grid.numCols();j++)
+        {
+            cout<<grid[i][j];
+        }
+        cout<<endl;
+    }
 }
 
 Grid<char> ReadInput(int &row, int &col)
 {
     string name=getLine("Grid input file name? ");
     while (!fileExists(name)) {
-        cout<<"No such file, please check!"<<endl;
-        string name=getLine("Grid input file name? ");
+        cout<<"Unable to open that file. Try again."<<endl;
+        name="";
+        name=getLine("Grid input file name? ");
         if(fileExists(name)) break;//this is my input precaucious
     }
+    /*string name=getLine("Grid input file name? ");
+    do{
+
+        if(!fileExists(name)) cout<<"No such file, please check!"<<endl;
+        string name=getLine("Grid input file name? ");
+    }while (!fileExists(name));*/
+
     ifstream inputfile;
     openFile(inputfile,name);
     //get first line, that is the row num
@@ -184,6 +208,14 @@ bool checkState(char x)
 
 Grid<char> Animation(Grid<char> grid){
     string time_str=getLine("How many frames?");
+    while(!stringIsInteger(time_str))
+    {
+        cout<<"Illegal integer format. Try again."<<endl;
+        time_str="";
+        time_str=getLine("How many frames?");
+        if(stringIsInteger(time_str)) break;
+    }
+
     int times=stringToInteger(time_str);
     int n_cols=grid.numCols();
     int n_rows=grid.numRows();
@@ -192,9 +224,10 @@ Grid<char> Animation(Grid<char> grid){
         tmp_grid=NextState(grid);
         grid=tmp_grid;
         ShowGrid(grid);
-        pause(100);
+        pause(1000);
         clearConsole();
     }
+    ShowGrid(grid);
 
     return grid;
 }
@@ -210,14 +243,14 @@ Grid<char> NextState_w(Grid<char> grid){
         for(int j=0;j<n_cols;j++)
         {
             //using inBound
-            for(int x=i-1;x<i+1;x++)
+            for(int x=i-1;x<=i+1;x++)
             {
                 /*
                 (i-1, j-1)(i-1, j)(i-1,j+1)
                 (i, j-1)  (i, j)  (i, j+1)
                 (i+1,j-1) (i+1,j) (i+1,j+1)
                 */
-                for(int y=j-1;y<j+1;y++)
+                for(int y=j-1;y<=j+1;y++)
                 {
                     //wraping using a math function
                     if(grid.inBounds(x,y)){
@@ -245,6 +278,13 @@ Grid<char> NextState_w(Grid<char> grid){
 }
 Grid<char> Animation_w(Grid<char> grid){
     string time_str=getLine("How many frames?");
+    while(!stringIsInteger(time_str))
+    {
+        cout<<"Illegal integer format. Try again."<<endl;
+        time_str="";
+        time_str=getLine("How many frames?");
+        if(stringIsInteger(time_str)) break;
+    }
     int times=stringToInteger(time_str);
     int n_cols=grid.numCols();
     int n_rows=grid.numRows();
@@ -253,9 +293,10 @@ Grid<char> Animation_w(Grid<char> grid){
         tmp_grid=NextState_w(grid);
         grid=tmp_grid;
         ShowGrid(grid);
-        pause(100);
+        pause(1000);
         clearConsole();
     }
+    ShowGrid(grid);
 
     return grid;
 }

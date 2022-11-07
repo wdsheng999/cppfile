@@ -11,3 +11,17 @@ IGs
 •Stacks
 •Queues
 
+assignment2: abstract date types
+wordladder connect one word to another --> queue
+Ngram randomly generate new text like came from the input --> map
+
+## stack
+
+push pop top/peek isEmpty
+
+frequently used ADT
+- no random access/each time one
+- no search
+- easy to build out of an array/physical meaning
+  
+  
