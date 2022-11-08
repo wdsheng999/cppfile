@@ -243,6 +243,7 @@ Grid<char> NextState_w(Grid<char> grid){
         for(int j=0;j<n_cols;j++)
         {
             //using inBound
+            int state=0;
             for(int x=i-1;x<=i+1;x++)
             {
                 /*
@@ -258,9 +259,11 @@ Grid<char> NextState_w(Grid<char> grid){
                             state=state+1;
                     }
                     else{
-                        x=(x+n_rows)%n_rows;
-                        y=(y+n_cols)%n_cols;
-                        if(checkState(grid[x][y]))
+                        //this cannot be x because we still in x loop
+                        //use x1 as a temp storage
+                        int x1=(x+n_rows)%n_rows;
+                        int y1=(y+n_cols)%n_cols;
+                        if(checkState(grid[x1][y1]))
                             state=state+1;
                     }
                 }
