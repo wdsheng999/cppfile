@@ -99,3 +99,22 @@ void hanoi(int n, char source, char target, char aux)
 see qt for source code
 
 this is a very good example of graphic coding but believe it will be examples in the following
+
+## recap
+recursion is about every time a small piece of a large problem
+
+converting decimal to binary
+```c
+// Prints the given integer's binary representation.
+// Precondition: n >= 0
+void printBinary(int n) {
+if (n < 2) {
+// base case; same as base 10
+cout << n;
+} else {
+// recursive case; break number apart
+printBinary(n / 2);
+printBinary(n % 2);
+}
+}
+```
