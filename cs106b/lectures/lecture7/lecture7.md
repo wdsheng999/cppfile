@@ -98,3 +98,4 @@ void hanoi(int n, char source, char target, char aux)
 
 see qt for source code
 
+this is a very good example of graphic coding but believe it will be examples in the following
