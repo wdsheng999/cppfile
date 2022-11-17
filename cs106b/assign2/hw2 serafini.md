@@ -44,4 +44,10 @@ Finding a word ladder between words w1 and w2:
 					Add the copy stack to the end of the queue.
 
 
-some of the code corresponds almost one-to-one with actual c++ code
+some of the code corresponds almost one-to-one with actual c++ code. one abstract part is the neighbor. how to define a same length word with only one letter different.
+
+one way is to loop the given dict, which is way too slow. we should loop through the alphabet of every position in the word. which is a n-26 loop
+each loop word should go through the dict, to check is a valid word or not.
+
+then it's to keep it shortest. cut off the middle. so first step to form a queue, then try to cut shorter. 
+also need to caution that word may cause infinite loop
