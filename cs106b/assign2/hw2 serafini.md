@@ -68,3 +68,4 @@ Another subtle issue is that you do not reuse words that have been included in a
 
 内存资源占用多 用小字典
 
+## PartB Random writter
