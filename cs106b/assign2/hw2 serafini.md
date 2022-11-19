@@ -65,3 +65,6 @@ Another subtle issue is that you do not reuse words that have been included in a
 最长路径打考虑,如果是按照alphabetic排序 也是唯一的
 那么循环打终止条件不再是找到目标单词
 而是将所有能到达打路径全部存下来,找最长打,再利用set把其中打重复去除
+
+内存资源占用多 用小字典
+

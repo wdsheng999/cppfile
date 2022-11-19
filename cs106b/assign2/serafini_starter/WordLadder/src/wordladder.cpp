@@ -10,6 +10,7 @@
 #include"stack.h"
 #include"queue.h"
 #include"hashset.h"
+#include"map"
 using namespace std;
 //-----------------data---------
 
@@ -134,5 +135,24 @@ HashSet<string> neighborWord(string& word,const Lexicon& dic)
 }
 
 void longLadder(Set<Stack<string>>& storeSet){
-    cout<<storeSet.toString();
+    //cout<<storeSet.toString()<<endl;
+    Map<string,int> ladderMap;
+    int num=0;
+    Stack<string> longLadder;
+    for (auto i : storeSet){
+        string longladder=i.toString();
+        int tmp = longladder.length();
+        ladderMap[longladder]=num;
+        //cout<<i.toString()<<endl;
+        if(tmp>num){
+            num=tmp;
+            longLadder=i;
+        }
+    }
+    cout<<longLadder.toString()<<endl;
+    //cout<<ladderMap.toString();
+//    cout<<ladderMap.values();
+
+    //cout<<i.toString()<<endl;
+
 }
