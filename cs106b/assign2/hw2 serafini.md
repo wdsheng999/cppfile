@@ -51,3 +51,17 @@ each loop word should go through the dict, to check is a valid word or not.
 
 then it's to keep it shortest. cut off the middle. so first step to form a queue, then try to cut shorter. 
 also need to caution that word may cause infinite loop
+
+Another subtle issue is that you do not reuse words that have been included in a previous shorter ladder. 
+
+思路: 解决这个问题--> partial ladder
+ partial ladder cat → cot → cog → to the queue. Lateron, if your code is processing ladder cat → cot → con, one neighbor of con is cog, so you might want to examine cat → cot → con → cog. 
+
+设计上, 保存每一个字串 每一个字串进入队列  在没法向下打时候自动出列 则留下能继续的串
+唯一性 就是当找下个打时候 不使用之前哪怕不能继续进行打串已经用过打词
+
+如果改为 最长路径 则要使用那些没走的串用过打词 但是不能重复使用本队列中打单词即可 所以字典不需要 而且只要
+
+最长路径打考虑,如果是按照alphabetic排序 也是唯一的
+那么循环打终止条件不再是找到目标单词
+而是将所有能到达打路径全部存下来,找最长打,再利用set把其中打重复去除
