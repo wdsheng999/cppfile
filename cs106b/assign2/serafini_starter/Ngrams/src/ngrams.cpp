@@ -11,22 +11,27 @@
 #include"map.h"
 #include"vector.h"
 #include"simpio.h"
-#include"strlib.h"
+#include"random.h"
 
 using namespace std;
 void welcome();
-void getInputFile(fstream& input,string& filename, int gramN);
-Map<Vector<string>,Vector<string>> generateNgram(const int gramN,fstream& input);
+void getInputFile(fstream& input,string& filename, int& gramN);
+Map<Vector<string>,Vector<string>> generateNgram(const int& gramN,fstream& input);
+void newLine(Map<Vector<string>,Vector<string>>& ngramMap);
 int main() {
     // TODO: Finish the program!
     fstream input;//input
     string filename;
     int gramN=0;
     Map<Vector<string>,Vector<string>> ngramMap;
+
     welcome();
     getInputFile(input,filename,gramN);
     ngramMap= generateNgram(gramN,input);
-    cout<<ngramMap;
+
+    //line=newLine(ngramMap);
+
+
 
 
     cout << "Exiting." << endl;
@@ -58,7 +63,7 @@ void getInputFile(fstream& input,string& filename, int& gramN){
     }while(gramN<2);
 
 }
-Map<Vector<string>,Vector<string>> generateNgram(const int gramN,fstream& input){
+Map<Vector<string>,Vector<string>> generateNgram(const int& gramN,fstream& input){
     Map<Vector<string>,Vector<string>> ngramMap;
     string word;
     Vector<string> wordlist;
@@ -66,13 +71,58 @@ Map<Vector<string>,Vector<string>> generateNgram(const int gramN,fstream& input)
     while(input>>word){
         wordlist.add(word);
     }
-    for(int i=0;(i=wordlist.size());i++){
+    for(int i=0;(i<wordlist.size());i++){
         window.clear();
+        suffix.clear();
+        //gene window
         for(int j=i;j<i+gramN-1;j++){
-            window.add(wordlist[j%wordlist.size()]);
+            window.add(wordlist.get(j%wordlist.size()));
         }
-        suffix.add(wordlist.get(i+gramN));
-        ngramMap.put(window,suffix);
+        //gene suffix
+        int suffix_num=(i+gramN-1)%wordlist.size();
+        word=wordlist.get(suffix_num);
+        if (ngramMap.containsKey(window)){
+            //if have, then copy suffix and add new
+            suffix=ngramMap.get(window);
+            suffix.add(word);
+            ngramMap.put(window,suffix);
+        }
+        else{
+            //if don't have, put suffix
+            suffix.add(word);
+            ngramMap.put(window,suffix);
+        }
+        //cout<<ngramMap.toString()<<endl;
+
     }
     return ngramMap;
 }
+
+void newLine(Map<Vector<string>,Vector<string>>& ngramMap){
+    int n;
+
+    n=getInteger("# of random words to generate (0 to quit)?");
+    while(n>0){
+        Vector<string> line;
+        Vector<Vector<string>>windowlist=ngramMap.keys();
+        int length=windowlist.size();
+        //initialize the begining
+        Vector<string> window=windowlist.get(randomInteger(0,length));
+        string suffix=ngramMap.get(window).get(randomInteger(0,ngramMap.get(window).size()));
+        for(auto str : window){
+            line.add(str);
+        }
+        line.add(suffix);
+        //finish the vector
+        while(line.size()<n){
+            window.clear();
+            window.add(line.get(line.size()-2));
+            window.add(line.get(line.size()-1));
+            if(ngramMap.containsKey(window)){
+                line.add(ngramMap.get(window).get(randomInteger(0,ngramMap.get(window).size())));
+            }
+        }
+    }
+}
+
+
