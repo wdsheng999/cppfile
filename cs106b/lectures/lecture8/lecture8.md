@@ -9,7 +9,7 @@
 • A more detailed recursion example
 • Fractals
 
-Assignment 3: Recursion
+## Assignment 3: Recursion
 (1) Fractals and Graphics
 (2) Grammar Solver
 <img src="./ksnip_20221116-231728.png">
@@ -30,3 +30,12 @@ elements such as sentences, noun phrases, and transitive verbs:
 <vp>::=<tv> <np>|<iv>
 <tv>::=hit|honored|kissed|helped
 <iv>::=died|collapsed|laughed|wept
+
+## challenge: implement of recursion function solving expression "((1+3)*(2*(4+1)))"
+
+since we only need to deal with * and +, the expression is always one of three cases, number/expression*expression/expression+expression
+
+
+int evaluation(string exp){
+    //"((1*3)+(4+2))"
+}
