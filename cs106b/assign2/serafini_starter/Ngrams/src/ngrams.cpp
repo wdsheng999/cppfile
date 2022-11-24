@@ -28,12 +28,7 @@ int main() {
     welcome();
     getInputFile(input,filename,gramN);
     ngramMap= generateNgram(gramN,input);
-
-    //line=newLine(ngramMap);
-
-
-
-
+    newLine(ngramMap);
     cout << "Exiting." << endl;
     return 0;
 }
@@ -102,26 +97,39 @@ void newLine(Map<Vector<string>,Vector<string>>& ngramMap){
     int n;
 
     n=getInteger("# of random words to generate (0 to quit)?");
-    while(n>0){
+    while(n!=0 && n<4){
+        cout<<"Must be at least 4 words."<<endl;
+        n=getInteger("# of random words to generate (0 to quit)?");
+    }
+    while(n>=4){
+
         Vector<string> line;
         Vector<Vector<string>>windowlist=ngramMap.keys();
-        int length=windowlist.size();
+        int length=windowlist.size()-1;
+
         //initialize the begining
         Vector<string> window=windowlist.get(randomInteger(0,length));
-        string suffix=ngramMap.get(window).get(randomInteger(0,ngramMap.get(window).size()));
+        Vector<string>suffixlist=ngramMap.get(window);
+        string suffix=suffixlist.get(randomInteger(0,suffixlist.size()-1));
         for(auto str : window){
             line.add(str);
         }
         line.add(suffix);
+        //cout<<line.toString()<<endl;
         //finish the vector
         while(line.size()<n){
-            window.clear();
-            window.add(line.get(line.size()-2));
-            window.add(line.get(line.size()-1));
-            if(ngramMap.containsKey(window)){
-                line.add(ngramMap.get(window).get(randomInteger(0,ngramMap.get(window).size())));
-            }
+            //cout<<"processing..."<<endl;
+            window.remove(0);
+            window.add(suffix);
+            //cout<<window<<endl;
+            suffix=randomElement(ngramMap.get(window));
+            line.add(suffix);}
+        cout<<"... ";
+        for(auto j : line){
+            cout<<j<<" ";
         }
+        cout<<"..."<<endl;
+        n=getInteger("# of random words to generate (0 to quit)?");
     }
 }
 
