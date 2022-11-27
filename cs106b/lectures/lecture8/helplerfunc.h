@@ -1,4 +1,8 @@
 #include <string>
+
+#include<iostream>
+#include<cmath>
 using namespace std;
-bool stringIsInteger(string str);
-int stringToInteger(string str);
+
+
+int evaluate(string str);
