@@ -46,10 +46,10 @@ void drawRecursiveCircle(GWindow & w, int depth, GPoint center, double radius) {
     } else {
         drawCenteredCircle(w, center, radius);
 
-        double length = 2.0 / 3 * radius;
-        for(int i = 0; i < 6; i++) {
-            GPoint childCenter = addPolar(center, length, 60*i);
-            drawRecursiveCircle(w, depth - 1, childCenter, radius / 3);
+        double length = 2.0 / 4 * radius;
+        for(int i = 0; i < 4; i++) {
+            GPoint childCenter = addPolar(center, length, 90*i);
+            drawRecursiveCircle(w, depth - 1, childCenter, radius / 4);
         }
     }
 }

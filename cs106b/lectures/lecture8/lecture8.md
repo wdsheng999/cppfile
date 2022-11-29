@@ -39,3 +39,29 @@ since we only need to deal with * and +, the expression is always one of three c
 int evaluation(string exp){
     //"((1*3)+(4+2))"
 }
+
+## fractal
+Many natural phenomena generate
+fractal patterns:
+1. earthquake fault lines
+2. animal color patterns
+3. clouds
+4. mountain ranges
+5. snowflakes
+6. crystals
+7. DNA
+8. ...
+
+## graphics using stanford lib
+
+```c
+
+Gpoint  //good name btw
+
+Gwidow w
+w.drawLinw(Gpoint a, Gpoint b)
+
+GRect * rect = new GRect(width, RECT_HEIGHT);
+w.add(rect, left.getX(), left.getY() - RECT_HEIGHT/2);
+```
+M_PI
