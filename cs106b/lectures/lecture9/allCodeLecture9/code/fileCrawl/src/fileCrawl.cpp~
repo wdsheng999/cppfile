@@ -1,0 +1,49 @@
+/*
+ * CS 106B, Chris Piech
+ * This program demonstrates the use of the Stanford C++ Set class.
+ * A set is a collection without duplicates that efficiently supports
+ * the core operations of adding, removing, and searching for elements.
+ */
+
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include "console.h"
+#include "timer.h"
+#include "hashset.h"
+#include "lexicon.h"
+#include "set.h"
+#include "vector.h"
+#include "filelib.h"
+#include "simpio.h"
+
+using namespace std;
+// function prototypes
+void crawl(string path);
+
+int main() {
+    string root = getLine("Please enter a directory: ");
+
+    cout << "looking..." << endl;
+
+    crawl(root);
+
+    cout << "done" << endl;
+    return 0;
+}
+
+void crawl(string path) {
+    // base case
+    if (isFile(path)) {
+        cout << path << endl;
+        return;
+    }
+    // recursive case
+    Vector<string> contents;
+    listDirectory(path, contents); // populates contents with the directory listing
+    for (string element : contents) {
+        // make a recursive call for each element
+        string newPath = path + "/" + element;
+        crawl(newPath);
+    }
+}
