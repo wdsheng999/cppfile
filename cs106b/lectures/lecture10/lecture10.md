@@ -19,3 +19,44 @@ Keep track of the two sums! Must use helper function.
 Keep removing values from the Vector until we have no more values left
 (base case)
 Search each possible path
+
+```c
+bool partitionable(Vector<int>& nums)
+{
+    return partitionable(nums,0,0);
+}
+bool partitionable(Vector<int>& rest, int sum1, int sum2){
+    if(rest.isEmpty()){
+        return sum1==sum2
+    }else{
+        int n=rest[0];
+        bool answer=partitionable()
+    }
+}
+```
+
+see ./part.cpp for searching an existing result
+
+### knapsack: best solution
+first we represent an object with struct
+
+```c
+struct objectT{
+    int weight;
+    int value;
+}
+
+int fillKnapsack(vector<objectT>& objects, int weight, int bestScore){
+    if(weight<0) return 0;
+    int localBestScore=bestScore;//keep track of score
+    int obSize=objects.size();
+    for (int i=0;i<obSize;i++){
+        object
+    }
+    
+}
+
+int fillKnapsack(vector<objectT>& objects, int targetWeight)
+{
+    return fillKnapsack(objects,targetWeight,0);
+}
