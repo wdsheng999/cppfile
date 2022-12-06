@@ -68,3 +68,48 @@ maze: if you go down one path and it isn't the
 correct path, then you backtrack to your last
 decision point to try an alternate path.
 
+you need to un-choose the path already used that fail, or mark 
+
+you need to mark the path before entering for making sure not going twice
+
+The code for today's class includes a text-based
+recursive maze creator and solver.
+The mazes look like the one to the right
+• There is a Start (marked with an "S") and a
+Finish (marked with an "F").
+• The Xs represent walls, and the spaces
+represent paths to walk through the maze.
+<img src="./maze%20in%20text.png">
+The program will put dots in the correct positions.
+<img src="./maze%20solved.png">
+
+and it will also put b in the wrong way 
+
+#### method
+ hand on wall, notice that circular maze will disrupt it
+ backtracking, keep track of where you've been
+ use compass directions. e.g. N/E/S/W
+
+follow this method we can have
+    mark positions we have seen with a period ('.'), and mark backtracking with 'b'.
+
+start: row=1 col=1, marking .
+try all the path N/E/S/W. if we hit the wall, change direction.
+ N-->row=0,col=1,'X' E--> rol=1,col=2, marking .
+ ...
+ fail all direction, marking b, back to last pos
+ what next? we check south to get there, so finishing with checking south. -->fail--> mark as b--> back
+ we use recursion to do it and return back quick
+
+start to write recursion:
+ 1. base case
+    (1) If we go out of the bounds of the maze (the grid bounds).
+    • This actually won't happen for our mazes, because we have surrounded all
+    paths with walls.
+    (2) If we hit a backtracked position ('b')
+    •Also won't happen, because once we mark as backtracked, we'll never get
+    there again.
+    (3) If we hit a wall ('X')
+    (4) If we hit a position we have seen before ('.')
+    (5) If we find the finish ('F')
+ 
