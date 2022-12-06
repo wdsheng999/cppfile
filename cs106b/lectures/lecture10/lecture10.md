@@ -60,3 +60,11 @@ int fillKnapsack(vector<objectT>& objects, int targetWeight)
 {
     return fillKnapsack(objects,targetWeight,0);
 }
+```
+
+### maze solving:find a solution
+A classic example of backtracking is solving a
+maze: if you go down one path and it isn't the
+correct path, then you backtrack to your last
+decision point to try an alternate path.
+
