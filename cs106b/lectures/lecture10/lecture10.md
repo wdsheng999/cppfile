@@ -112,4 +112,8 @@ start to write recursion:
     (3) If we hit a wall ('X')
     (4) If we hit a position we have seen before ('.')
     (5) If we find the finish ('F')
- 
+ 2. check 4 directions, using recursion
+
+
+### Clumsy Thumbsy: Find All Solutions
+
