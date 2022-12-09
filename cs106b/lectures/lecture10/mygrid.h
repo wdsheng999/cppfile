@@ -1,6 +1,6 @@
 /*Grid.h*/
-#ifndef GRID_H
-#define GRID_H
+#ifndef MYGRID_H
+#define MYGRID_H
 
 #include <vector>
 // #include <windows.h>
@@ -47,25 +47,25 @@ Grid<T>::~Grid()
 	delete m_grid;
 }
 
-template<typename T>
-void Grid<T>::Print()
-{
-	/*This function assumes there is a valid output operator for type T*/
-	for (int i = 0; i < m_height; ++i)
-	{
-		for (int j = 0; j < m_width; ++j)
-			std::cout << at(j,i);
-	}
-}
+// template<typename T>
+// void Grid<T>::Print()
+// {
+// 	/*This function assumes there is a valid output operator for type T*/
+// 	for (int i = 0; i < m_height; ++i)
+// 	{
+// 		for (int j = 0; j < m_width; ++j)
+// 			// std::cout << at(j,i);
+// 	}
+// }
 
 template<typename T>
 T Grid<T>::at(int x, int y)
 {
-	 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD CursorPosition;
-	CursorPosition.X = 2+(x*2);
-	CursorPosition.Y = 2+(y*2);
-	SetConsoleCursorPosition(console, CursorPosition);
+	//  HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	// COORD CursorPosition;
+	// CursorPosition.X = 2+(x*2);
+	// CursorPosition.Y = 2+(y*2);
+	// SetConsoleCursorPosition(console, CursorPosition);
 	return (*m_grid)[y][x];
 }
 

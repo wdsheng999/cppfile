@@ -117,3 +117,11 @@ start to write recursion:
 
 ### Clumsy Thumbsy: Find All Solutions
 
+You want to write a program that will autocorrect words.
+Given a string that represents a single (potentially
+misspelled) word, a lexicon of English words, a map that
+maps from a character to a string of the characters near it
+on a keyboard, and an admissible number of errors, find
+the Set of all potential intended words.
+
+we can compare it with the chatgpt version
